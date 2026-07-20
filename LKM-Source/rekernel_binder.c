@@ -255,7 +255,7 @@ static struct binder_transaction* binder_find_outdated_transaction_ilocked(struc
 	struct list_head* target_list)
 {
 	struct binder_work* w;
-	bool second = false;
+	// bool second = false;
 
 	list_for_each_entry(w, target_list, entry) {
 		struct binder_transaction* t_queued;
@@ -264,10 +264,10 @@ static struct binder_transaction* binder_find_outdated_transaction_ilocked(struc
 			continue;
 		t_queued = container_of(w, struct binder_transaction, work);
 		if (binder_can_update_transaction(t_queued, t)) {
-			if (second)
-				return t_queued;
-			else
-				second = true;
+			// if (second)
+			return t_queued;
+			// else
+				// second = true;
 		}
 	}
 	return NULL;
